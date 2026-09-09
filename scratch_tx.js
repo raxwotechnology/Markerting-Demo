@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 const BankAccount = require('./server/src/models/BankAccount');
 const { appendBankTransaction } = require('./server/src/utils/bankLedger');
 
-mongoose.connect('mongodb+srv://raxwotechnology_db_user:2ZPD18kFcIVlwTBm@cluster0.4zrxp6p.mongodb.net/raxwo_db?retryWrites=true&w=majority&appName=Cluster0')
+require('dotenv').config();
+mongoose.connect(process.env.MONGO_URI || 'mongodb+srv://raxwotechnology_db_user:L5RFNu53owbRvtKa@cluster0.mcukucb.mongodb.net/raxwo_db?retryWrites=true&w=majority&appName=Cluster0')
   .then(async () => {
     try {
       // Find the first bank account

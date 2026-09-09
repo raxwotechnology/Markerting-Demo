@@ -3,7 +3,8 @@ const BankAccount = require('./server/src/models/BankAccount');
 const Payroll = require('./server/src/models/Payroll');
 const FinanceEntry = require('./server/src/models/FinanceEntry');
 
-mongoose.connect('mongodb+srv://raxwotechnology_db_user:2ZPD18kFcIVlwTBm@cluster0.4zrxp6p.mongodb.net/raxwo_db?retryWrites=true&w=majority&appName=Cluster0')
+require('dotenv').config();
+mongoose.connect(process.env.MONGO_URI || 'mongodb+srv://raxwotechnology_db_user:L5RFNu53owbRvtKa@cluster0.mcukucb.mongodb.net/raxwo_db?retryWrites=true&w=majority&appName=Cluster0')
   .then(async () => {
     const lastPayroll = await Payroll.findOne().sort({ createdAt: -1 }).populate('bankAccount');
     console.log('Last Payroll ID:', lastPayroll._id);
